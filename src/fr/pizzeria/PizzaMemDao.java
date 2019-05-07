@@ -43,7 +43,7 @@ public class PizzaMemDao implements IPizzaDao {
 			//todo delete menu;
 			menu = null;
 		} else if(menu != null ) {
-			menu.remove(menu.get(getIndexPizzaByCode(codePizza)));
+			menu.remove(menu.get(getIndexPizzaOnMenu(codePizza)));
 		}
 	}
 
@@ -57,19 +57,6 @@ public class PizzaMemDao implements IPizzaDao {
 		for (index = 0; index < menu.size(); index++ ) {
 			if(menu.get(index).code.equals(codePizza)) {
 				return new Pizza(menu.get(index).id,menu.get(index).code,menu.get(index).libelle,menu.get(index).prix);
-			}
-		}
-		return null;
-	}
-	
-	public Integer getIndexPizzaByCode(String codePizza) {
-		if(checkMenuEmpty()){
-			return null;
-		}
-		int index;
-		for (index = 0; index < menu.size(); index++ ) {
-			if(menu.get(index).code.equals(codePizza)) {
-				return index;
 			}
 		}
 		return null;
